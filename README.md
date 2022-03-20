@@ -8,7 +8,7 @@
 * UID:3035806324
 ```
 ```
-* Team_Member_1 
+* Team_Member_2
 * Github username: JaeTee
 * Name: 
 * UID:
