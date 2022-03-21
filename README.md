@@ -13,3 +13,31 @@
 * Name: 
 * UID:
 ```
+
+# Proposed Project
+
+## Name of Game
+
+## Brief Description
+
+An in-depth paragraph about your project
+
+## Game Rules
+* A
+* B
+* C
+
+## Features and Coding Requirements
+* 1: xxxx
+    * a
+    * b
+* 2: yyyy
+    * a
+* 3: xxxx
+    * a
+    * b
+* 4: yyyy
+    * a
+* 5: xxxx
+    * a
+    * b
