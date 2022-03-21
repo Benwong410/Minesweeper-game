@@ -10,8 +10,8 @@
 ```
 * Team_Member_2
 * Github username: JaeTee211
-* Name: 
-* UID:
+* Name: Tsang Hing Kwan Jack
+* UID:3035782396
 ```
 
 # Proposed Project
