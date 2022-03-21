@@ -20,7 +20,7 @@
 
 ## Brief Description
 
-An in-depth paragraph about your project
+(possible game: 1. Story-telling game 2. Minesweeper 3. Heads-up poker 
 
 ## Game Rules
 * A
