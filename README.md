@@ -1,4 +1,4 @@
-# Group-35
+# Group-35 (Project Proposal)
 
 ## Identification of The Team Members
 ```
@@ -9,7 +9,7 @@
 ```
 ```
 * Team_Member_2
-* Github username: JaeTee
+* Github username: JaeTee211
 * Name: 
 * UID:
 ```
