@@ -36,10 +36,10 @@ Randomly generate a rectangular board with selected number of "mines" for each g
     * The game will use 2D arrays for storing the game status, such as the board on screen and hiden game board
 
 * 3: Dynamic memory management
-    * a
-    * b
+    * There will be update of arrays after player input and provide hints
+    
 * 4: File input/output (e.g., for loading/saving game status)
-    * a
+    * The game can be pause and resume if the players quit 
+    
 * 5: Program codes in multiple files
-    * a
-    * b
+    * use makefile to store function in mutiple files
