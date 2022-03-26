@@ -17,15 +17,15 @@
 # Proposed Project
 
 ## Name of Game
+Minesweeper
 
 ## Brief Description
-
-(possible game: 1. Story-telling game 2. Minesweeper 3. Heads-up poker 
+Randomly generate a rectangular board with selected number of "mines" for each game.
 
 ## Game Rules
-* A
-* B
-* C
+1. Clear the unit of the board without detonating the "mines".
+2. For each movement, if the selected unit is not "mine", there will be hints provided, telling the player how many "mines" around the area.
+3. If all the unit are cleared and the "mines" are not detonated, the game will finish and the player will win the game.
 
 ## Features and Coding Requirements
 * 1: xxxx
