@@ -29,16 +29,17 @@ Randomly generate a rectangular board with selected number of "mines" for each g
 4. If all the unit are cleared and the "mines" are not detonated, the game will finish and the player will win the game.
 
 ## Features and Coding Requirements
-* 1: xxxx
+* 1: Generation of random game sets or events
+    * The position of the "mines" will be randomly generated
+
+* 2: Data structures for storing game status
+    * The game will use 2D arrays for storing the game status, such as the board on screen and hiden game board
+
+* 3: Dynamic memory management
     * a
     * b
-* 2: yyyy
+* 4: File input/output (e.g., for loading/saving game status)
     * a
-* 3: xxxx
-    * a
-    * b
-* 4: yyyy
-    * a
-* 5: xxxx
+* 5: Program codes in multiple files
     * a
     * b
