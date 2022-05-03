@@ -88,8 +88,6 @@ int main()
     Level (level);
     //cout << side<< '' << num_mines;
 
-    bool gameOver = false; 
-
 	char minesBoard[16][16], playerBoard[16][16]; //step1 : define 2 array (1 for player, 1 for the mines)
 
     int movesremains = side * side - num_mines;
@@ -100,9 +98,26 @@ int main()
     //printboard(minesBoard);
     //printboard(playerBoard);
     Mines_implementation (mines, minesBoard); // step4 : randomly placing mines in mines board
-
     //printboard(minesBoard);
     //printboard(playerBoard);
+	bool endgame = false; 
+
+	while (endgame == false)
+	{
+		cout<< "Board:"<<endl;
+		printboard(playerBoard);
+		int col, row;
+
+		cin>>row>>col;
+
+		endgame = playloop (playerBoard, minesBoard, mines, row, col, &movesremains);
+
+		if ((endgames == false) && (movesremains == 0))
+		{
+			cout<<"Winner Winner, Chicken Dinner!";
+			endgame = true;
+		}
+	}
     
     return 0;
 }
