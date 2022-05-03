@@ -5,6 +5,31 @@ using namespace std;
 
 int side, num_mines; //global variable of side and number of mines
 
+void startgame(char realboard[][MAXSIDE], char board[][MAXSIDE]){
+	srand(time (NULL));
+	for (int i=0; i<SIDE; i++){
+		for (int j=0; j<SIDE; j++){
+			board[i][j] = realboard[i][j] = '-';
+		}
+	}
+}
+
+void printboard(char board[][MAXSIDE])
+{
+	cout << " ";
+	for (i=0; i<SIDE; i++){
+		cout << " " << i;
+	}
+	cout << endl;
+	for (i=0; i<SIDE; i++){
+		cout << " " << i;
+		for (j=0; j<SIDE; j++){
+			cout << " " << board[i][j];
+		}
+		cout << endl;
+	}
+}
+
 //Function that decide the level of the game(board size, mines amount)
 void Level(string level)
 {
