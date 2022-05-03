@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#define MAXSIDE 17
 
 using namespace std;
 
