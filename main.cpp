@@ -29,6 +29,23 @@ void printboard(char board[][16]){
 	}
 }
 
+//function that check whether the input exist on game board
+bool Valid_input(int row, int col)
+{
+	if (row >= 0) && (row < side) && (col >= 0) && (col < side){
+		return true;
+	}
+}
+
+//function that check whether the spot has mines or not
+bool Minespot (int row, int col, char minesboard[][16])
+{
+	if (minesboard[row][col] == '*')
+		return true;
+	else
+		return false;
+}
+
 void Mines_implementation(int mines[][2], char minesBoard[][16])
 {
 	bool check[side*side];
@@ -55,47 +72,32 @@ void Mines_implementation(int mines[][2], char minesBoard[][16])
 	return;
 }
 
-int nearbymines(int row, int col, int mines[][2], char realBoard[][16]){	//function that checks the whether there are mines in nearby position of the selected position
-	int count=0;
-	if (isValid(row+1,col)==true){				//check the south
-		if (isMine(row+1, col, realBoard)==true){
-			count++;
-		}
+//function that count the number of nearby munes of the selected position
+int nearbymines_num(int row, int col, int mines[][2], char minesBoard[][16]){	
+	int num=0;
+	if (Valid_input(row+1,col)==true && (Minespot(row+1, col, minesBoard)==true)){              //check the south	
+		num++;
 	}
-	if (isValid(row,col+1)==true){				//check the east
-		if (isMine(row, col+1, realBoard)==true){
-			count++;
-		}
+	if (Valid_input(row,col+1)==true && Minespot(row, col+1, minesBoard)==true){                //check the east
+		num++;
 	}
-	if (isValid(row-1,col)==true){				//check the north
-		if (isMine(row-1, col, realBoard)==true){
-			count++;
-		}
+	if (Valid_input(row-1,col)==true && Minespot(row-1, col, minesBoard)==true){				//check the north
+	    num++;
 	}
-	if (isValid(row,col-1)==true){				//check the west
-		if(isMine(row, col-1, realBoard)==true){
-			count++;
-		}
+	if (Valid_input(row,col-1)==true && Minespot(row, col-1, minesBoard)==true){				//check the west
+		num++;
 	}
-	if (isValid(row-1, col+1)==true){			//check the north-east
-		if (isMine(row-1, col+1, realBoard)==true){
-			count++;
-		}
+	if (Valid_input(row-1, col+1)==true && Minespot(row-1, col+1, minesBoard)==true){			//check the north-east
+	    num++;
 	}
-	if (isValid(row-1, col-1)==true){			//check the north-west
-		if (isMine(row-1, col-1, realBoard)==true){
-			count++;
-		}
+	if (Valid_input(row-1, col-1)==true && Minespot(row-1, col-1, minesBoard)==true){			//check the north-west
+		num++;
 	}
-	if (isValid(row+1, col-1)==true){			//check the south-west
-		if (isMine(row+1, col-1, realBoard)==true)
-			count++;
-		}
+	if (Valid_input(row+1, col-1)==true && Minespot(row+1, col-1, minesBoard)==true){			//check the south-west
+	    num++;
 	}
-	if (isValid(row+1, col+1)==true){			//check the south-east
-		if (isMine (row+1, col+1, realBoard)==true)
-			count++;
-		}
+	if (Valid_input(row+1, col+1)==true && Minespot (row+1, col+1, minesBoard)==true){			//check the south-east
+	    num++;
 	}
 	return (count);
 }
