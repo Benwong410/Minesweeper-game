@@ -30,11 +30,9 @@ void printboard(char board[][16]){
 }
 
 //function that check whether the input exist on game board
-bool Valid_input(int row, int col)
-{
-	if (row >= 0) && (row < side) && (col >= 0) && (col < side){
-		return true;
-	}
+bool Valid_input(int row, int col){
+		return ((row >= 0) && (row < side) && (col >= 0) && (col < side));
+
 }
 
 //function that check whether the spot has mines or not
@@ -72,20 +70,20 @@ void Mines_implementation(int mines[][2], char minesBoard[][16])
 	return;
 }
 
-//function that count the number of nearby mines of the selected position
-int nearbymines_num(int row, int col, int mines[][2], char minesBoard[][16]){
+//function that count the number of nearby munes of the selected position
+int nearbymines_num(int row, int col, int mines[][2], char minesBoard[][16]){	
 	int num=0;
-	if (Valid_input(row+1,col)==true && (Minespot(row+1, col, minesBoard)==true)){                         //check the south	
-	    num++;
+	if (Valid_input(row+1,col)==true && (Minespot(row+1, col, minesBoard)==true)){              //check the south	
+		num++;
 	}
-	if (Valid_input(row,col+1)==true && Minespot(row, col+1, minesBoard)==true){                           //check the east
-	    num++;
+	if (Valid_input(row,col+1)==true && Minespot(row, col+1, minesBoard)==true){                //check the east
+		num++;
 	}
-	if (Valid_input(row-1,col)==true && Minespot(row-1, col, minesBoard)==true){			        //check the north
+	if (Valid_input(row-1,col)==true && Minespot(row-1, col, minesBoard)==true){				//check the north
 	    num++;
 	}
 	if (Valid_input(row,col-1)==true && Minespot(row, col-1, minesBoard)==true){				//check the west
-	    num++;
+		num++;
 	}
 	if (Valid_input(row-1, col+1)==true && Minespot(row-1, col+1, minesBoard)==true){			//check the north-east
 	    num++;
@@ -99,7 +97,7 @@ int nearbymines_num(int row, int col, int mines[][2], char minesBoard[][16]){
 	if (Valid_input(row+1, col+1)==true && Minespot (row+1, col+1, minesBoard)==true){			//check the south-east
 	    num++;
 	}
-	return (count);
+	return num;
 }
 
 //Function that decide the level of the game(board size, mines amount)
@@ -123,18 +121,49 @@ void Level(string level)
     return;
 }
 
-int main()
+bool playloop(char playerBoard[][16], char minesBoard[][16], int mines[][2], int row, int col, int *movesremains)
 {
+
+	if (playerBoard[row][col] != '-')
+		return (false);
+
+	// You opened a mine
+	// You are going to lose
+	if (minesBoard[row][col] == '*')
+	{
+		playerBoard[row][col]='*';
+
+		for (int i=0; i<num_mines; i++)
+			playerBoard[mines[i][0]][mines[i][1]]='*';
+
+		printboard (playerBoard);
+		cout<< "Boom! Game Over!";
+		return true ;
+	}
+
+	else{
+		(*movesremains)--;
+
+		playerBoard[row][col] = nearbymines_num(row, col, mines, playerBoard) + '0';
+
+		return false;
+	}
+			
+}			
+
+
+
+int main(){
     string level;
     cout << "Please input the level of difficulty of your game: (Rookie/Challenger/Master)" << endl;
     cin >> level;
     Level (level);
     //cout << side<< '' << num_mines;
 
-	char minesBoard[16][16], playerBoard[16][16]; //step1 : define 2 array (1 for player, 1 for the mines)
+    char minesBoard[16][16], playerBoard[16][16]; //step1 : define 2 array (1 for player, 1 for the mines)
 
     int movesremains = side * side - num_mines;
-	int mines[num_mines][2]; // step2 : define an array for mines
+    int mines[num_mines][2]; // step2 : define an array for mines
 
     startgame (minesBoard, playerBoard);// step3 : create two game board
 
@@ -143,24 +172,24 @@ int main()
     Mines_implementation (mines, minesBoard); // step4 : randomly placing mines in mines board
     //printboard(minesBoard);
     //printboard(playerBoard);
-	bool endgame = false; 
+    bool endgame = false; 
 
-	while (endgame == false)
-	{
-		cout<< "Board:"<<endl;
-		printboard(playerBoard);
-		int col, row;
-		cout << "Please input your move:(first row then column) ";
-		cin>>row>>col;
+    while (endgame == false){
+	    cout<< "Board:"<<endl;
+	    printboard(playerBoard);
+	    printboard(minesBoard);
+	    int col, row;
+	    cout<< "Please enter your move: (row[Spacebar]col)";
+	    cin>>row>>col;
 
-		endgame = playloop (playerBoard, minesBoard, mines, row, col, &movesremains);
+	    endgame = playloop (playerBoard, minesBoard, mines, row, col, &movesremains);
 
-		if ((endgames == false) && (movesremains == 0))
-		{
-			cout<<"Winner Winner, Chicken Dinner!";
-			endgame = true;
-		}
-	}
+	    if ((endgame == false) && (movesremains == 0)){
+	    		cout<<"Winner Winner, Chicken Dinner!";
+	    		endgame = true;
+	    	}
+    	}
     
-    return 0;
+        return 0;
 }
+
