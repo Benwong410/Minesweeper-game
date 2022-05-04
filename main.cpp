@@ -71,9 +71,9 @@ void Mines_implementation(int mines[][2], char minesBoard[][16])
 }
 
 //function that count the number of nearby munes of the selected position
-int nearbymines_num(int row, int col, int mines[][2], char minesBoard[][16]){	
+char nearbymines_num(int row, int col, int mines[][2], char minesBoard[][16]){
 	int num=0;
-	if (Valid_input(row+1,col)==true && (Minespot(row+1, col, minesBoard)==true)){              //check the south	
+	if (Valid_input(row+1,col)==true && Minespot(row+1, col, minesBoard)==true){                //check the south	
 		num++;
 	}
 	if (Valid_input(row,col+1)==true && Minespot(row, col+1, minesBoard)==true){                //check the east
@@ -85,7 +85,7 @@ int nearbymines_num(int row, int col, int mines[][2], char minesBoard[][16]){
 	if (Valid_input(row,col-1)==true && Minespot(row, col-1, minesBoard)==true){				//check the west
 		num++;
 	}
-	if (Valid_input(row-1, col+1)==true && Minespot(row-1, col+1, minesBoard)==true){			//check the north-east
+	if (Valid_input(row-1, col+1)==true && Minespot(row-1, col+1, minesBoard)==true){           //check the north-east
 	    num++;
 	}
 	if (Valid_input(row-1, col-1)==true && Minespot(row-1, col-1, minesBoard)==true){			//check the north-west
@@ -140,15 +140,11 @@ bool playloop(char playerBoard[][16], char minesBoard[][16], int mines[][2], int
 		cout<< "Boom! Game Over!";
 		return true ;
 	}
-
 	else{
 		(*movesremains)--;
-
-		playerBoard[row][col] = nearbymines_num(row, col, mines, playerBoard) + '0';
-
+		playerBoard[row][col] = nearbymines_num(row, col, mines, minesBoard) + '0';
 		return false;
 	}
-			
 }			
 
 
@@ -173,13 +169,15 @@ int main(){
     //printboard(minesBoard);
     //printboard(playerBoard);
     bool endgame = false; 
-
+    if (movesremains==(side * side - num_mines)){
+        
+    }
     while (endgame == false){
 	    cout<< "Board:"<<endl;
 	    printboard(playerBoard);
 	    printboard(minesBoard);
 	    int col, row;
-	    cout<< "Please enter your move: (row[Spacebar]col)";
+	    cout<< "Please enter your move: (row first then col)";
 	    cin>>row>>col;
 
 	    endgame = playloop (playerBoard, minesBoard, mines, row, col, &movesremains);
@@ -192,4 +190,3 @@ int main(){
     
         return 0;
 }
-
