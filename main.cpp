@@ -14,10 +14,8 @@ void startgame(char realboard[][16], char board[][16]){
 	}
 }
 
-void printboard(char board[][16])
-{
+void printboard(char board[][16]){
 	cout << "  ";
-	
 	for (int i=0; i<side; i++){
 		cout << " " << i;
 	}
@@ -57,7 +55,50 @@ void Mines_implementation(int mines[][2], char minesBoard[][16])
 	return;
 }
 
-
+int nearbymines(int row, int col, int mines[][2], char realBoard[][16]){	//function that checks the whether there are mines in nearby position of the selected position
+	int count=0;
+	if (isValid(row+1,col)==true){				//check the south
+		if (isMine(row+1, col, realBoard)==true){
+			count++;
+		}
+	}
+	if (isValid(row,col+1)==true){				//check the east
+		if (isMine(row, col+1, realBoard)==true){
+			count++;
+		}
+	}
+	if (isValid(row-1,col)==true){				//check the north
+		if (isMine(row-1, col, realBoard)==true){
+			count++;
+		}
+	}
+	if (isValid(row,col-1)==true){				//check the west
+		if(isMine(row, col-1, realBoard)==true){
+			count++;
+		}
+	}
+	if (isValid(row-1, col+1)==true){			//check the north-east
+		if (isMine(row-1, col+1, realBoard)==true){
+			count++;
+		}
+	}
+	if (isValid(row-1, col-1)==true){			//check the north-west
+		if (isMine(row-1, col-1, realBoard)==true){
+			count++;
+		}
+	}
+	if (isValid(row+1, col-1)==true){			//check the south-west
+		if (isMine(row+1, col-1, realBoard)==true)
+			count++;
+		}
+	}
+	if (isValid(row+1, col+1)==true){			//check the south-east
+		if (isMine (row+1, col+1, realBoard)==true)
+			count++;
+		}
+	}
+	return (count);
+}
 
 //Function that decide the level of the game(board size, mines amount)
 void Level(string level)
