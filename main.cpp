@@ -75,17 +75,17 @@ void Mines_implementation(int mines[][2], char minesBoard[][16])
 //function that count the number of nearby munes of the selected position
 int nearbymines_num(int row, int col, int mines[][2], char minesBoard[][16]){	
 	int num=0;
-	if (Valid_input(row+1,col)==true && (Minespot(row+1, col, minesBoard)==true)){              //check the south	
-		num++;
+	if (Valid_input(row+1,col)==true && (Minespot(row+1, col, minesBoard)==true)){                         //check the south	
+	    num++;
 	}
-	if (Valid_input(row,col+1)==true && Minespot(row, col+1, minesBoard)==true){                //check the east
-		num++;
+	if (Valid_input(row,col+1)==true && Minespot(row, col+1, minesBoard)==true){                           //check the east
+	    num++;
 	}
-	if (Valid_input(row-1,col)==true && Minespot(row-1, col, minesBoard)==true){				//check the north
+	if (Valid_input(row-1,col)==true && Minespot(row-1, col, minesBoard)==true){			        //check the north
 	    num++;
 	}
 	if (Valid_input(row,col-1)==true && Minespot(row, col-1, minesBoard)==true){				//check the west
-		num++;
+	    num++;
 	}
 	if (Valid_input(row-1, col+1)==true && Minespot(row-1, col+1, minesBoard)==true){			//check the north-east
 	    num++;
