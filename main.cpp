@@ -72,8 +72,8 @@ void Mines_implementation(int mines[][2], char minesBoard[][16])
 	return;
 }
 
-//function that count the number of nearby munes of the selected position
-int nearbymines_num(int row, int col, int mines[][2], char minesBoard[][16]){	
+//function that count the number of nearby mines of the selected position
+int nearbymines_num(int row, int col, int mines[][2], char minesBoard[][16]){
 	int num=0;
 	if (Valid_input(row+1,col)==true && (Minespot(row+1, col, minesBoard)==true)){                         //check the south	
 	    num++;
@@ -150,7 +150,7 @@ int main()
 		cout<< "Board:"<<endl;
 		printboard(playerBoard);
 		int col, row;
-
+		cout << "Please input your move:(first row then column) ";
 		cin>>row>>col;
 
 		endgame = playloop (playerBoard, minesBoard, mines, row, col, &movesremains);
