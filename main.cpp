@@ -175,7 +175,7 @@ int main(){
     while (endgame == false){
 	    cout<< "Board:"<<endl;
 	    printboard(playerBoard);
-	    printboard(minesBoard);
+	    //printboard(minesBoard);
 	    int col, row;
 	    cout<< "Please enter your move: (row first then col)";
 	    cin>>row>>col;
