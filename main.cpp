@@ -6,22 +6,22 @@
 using namespace std;
 int side, num_mines; //global variable of side and number of mines
 
-void startgame(char realboard[][16], char board[][16]){
-    srand(time (NULL));
-	for (int i=0; i<side; i++){
+void startgame(char realboard[][16], char board[][16]){					//function that initialise two boards, one is for storing the mine position, another one is for player
+    srand(time (NULL));									//generate a random number to make sure that the game will not be same everytime
+	for (int i=0; i<side; i++){							//ensure that two boards have no mines
 		for (int j=0; j<side; j++){
 			board[i][j] = realboard[i][j] = '-';
 		}
 	}
 }
 
-void printboard(char board[][16]){
+void printboard(char board[][16]){							//function that print out the board
 	cout << "  ";
-	for (int i=0; i<side; i++){
+	for (int i=0; i<side; i++){							//print out the columns
 		cout << " " << i;
 	}
 	cout << endl;
-	for (int i=0; i<side; i++){
+	for (int i=0; i<side; i++){							//print out the rows
 		cout << " " << i;
 		for (int j=0; j<side; j++){
 			cout << " " << board[i][j];
@@ -30,14 +30,11 @@ void printboard(char board[][16]){
 	}
 }
 
-//function that check whether the input exist on game board
-bool Valid_input(int row, int col){
+bool Valid_input(int row, int col){							//function that check whether the input exist on game board
 		return ((row >= 0) && (row < side) && (col >= 0) && (col < side));
-
 }
 
-//function that check whether the spot has mines or not
-bool Minespot (int row, int col, char minesboard[][16])
+bool Minespot (int row, int col, char minesboard[][16])					//function that check whether the selected cell has mine or not
 {
 	if (minesboard[row][col] == '*')
 		return true;
@@ -45,33 +42,31 @@ bool Minespot (int row, int col, char minesboard[][16])
 		return false;
 }
 
-
-//function that count the number of nearby munes of the selected position
-char nearbymines_num(int row, int col, int mines[][2], char minesBoard[][16]){
+char nearbymines_num(int row, int col, int mines[][2], char minesBoard[][16]){		//function that count the number of nearby munes of the selected position
 	int num=0;
-	if (Valid_input(row+1,col)==true && Minespot(row+1, col, minesBoard)==true){                //check the south	
+	if (Valid_input(row+1,col)==true && Minespot(row+1, col, minesBoard)==true){	//check the south	
 		num++;
 	}
-	if (Valid_input(row,col+1)==true && Minespot(row, col+1, minesBoard)==true){                //check the east
+	if (Valid_input(row,col+1)==true && Minespot(row, col+1, minesBoard)==true){	//check the east
 		num++;
 	}
-	if (Valid_input(row-1,col)==true && Minespot(row-1, col, minesBoard)==true){				//check the north
-	    num++;
-	}
-	if (Valid_input(row,col-1)==true && Minespot(row, col-1, minesBoard)==true){				//check the west
+	if (Valid_input(row-1,col)==true && Minespot(row-1, col, minesBoard)==true){	//check the north
 		num++;
 	}
-	if (Valid_input(row-1, col+1)==true && Minespot(row-1, col+1, minesBoard)==true){           //check the north-east
-	    num++;
-	}
-	if (Valid_input(row-1, col-1)==true && Minespot(row-1, col-1, minesBoard)==true){			//check the north-west
+	if (Valid_input(row,col-1)==true && Minespot(row, col-1, minesBoard)==true){	//check the west
 		num++;
 	}
-	if (Valid_input(row+1, col-1)==true && Minespot(row+1, col-1, minesBoard)==true){			//check the south-west
-	    num++;
+	if (Valid_input(row-1, col+1)==true && Minespot(row-1, col+1, minesBoard)==true){//check the north-east
+		num++;
 	}
-	if (Valid_input(row+1, col+1)==true && Minespot (row+1, col+1, minesBoard)==true){			//check the south-east
-	    num++;
+	if (Valid_input(row-1, col-1)==true && Minespot(row-1, col-1, minesBoard)==true){//check the north-west
+		num++;
+	}
+	if (Valid_input(row+1, col-1)==true && Minespot(row+1, col-1, minesBoard)==true){//check the south-west
+		num++;
+	}
+	if (Valid_input(row+1, col+1)==true && Minespot (row+1, col+1, minesBoard)==true){//check the south-east
+		num++;
 	}
 	return num;
 }
