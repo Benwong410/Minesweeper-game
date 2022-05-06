@@ -180,9 +180,7 @@ int main(){
 	    int col, row;
 	    cout<< "Please enter your move: (row first then col)";
 	    cin>>row>>col;
-
 	    endgame = playloop (playerBoard, minesBoard, mines, row, col, &movesremains);
-
 	    if ((endgame == false) && (movesremains == 0)){
 	    		ifstream fin2;
     			fin2.open("win.txt");
