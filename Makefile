@@ -7,7 +7,7 @@ board.o: board.cpp board.h
 	g++ -c board.cpp
 
 main.o: main.cpp
-	g++ c- main.cpp
+	g++ -c main.cpp
 	
 clean:
 	rm *.o main
