@@ -151,6 +151,12 @@ bool playloop(char playerBoard[][16], char minesBoard[][16], int mines[][2], int
 
 
 int main(){
+    ifstream fin;
+    fin.open("Minesweeper.txt");
+    string line;
+    while ( getline(fin, line) ) {
+		cout << line << endl;
+ 	}
     string level;
     cout << "Please input the level of difficulty of your game: (Rookie/Challenger/Master)" << endl;
     cin >> level;
