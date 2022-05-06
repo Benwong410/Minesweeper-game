@@ -16,7 +16,8 @@ void startgame(char realboard[][16], char board[][16]){
 	}
 }
 
-void printboard(char board[][16]){							//function that print out the board
+//A function that print out the board
+void printboard(char board[][16]){							
 	cout << "  ";
 	for (int i=0; i<side; i++){							//print out the columns
 		cout << " " << i;
@@ -31,11 +32,13 @@ void printboard(char board[][16]){							//function that print out the board
 	}
 }
 
-bool Valid_input(int row, int col){							//function that check whether the input exist on game board
+//A function that check whether the input exist on game board
+bool Valid_input(int row, int col){							
 		return ((row >= 0) && (row < side) && (col >= 0) && (col < side));
 }
 
-bool Minespot (int row, int col, char minesboard[][16])					//function that check whether the selected cell has mine or not
+//A function that check whether the selected cell has mine or not
+bool Minespot (int row, int col, char minesboard[][16])					
 {
 	if (minesboard[row][col] == '*')
 		return true;
@@ -43,7 +46,8 @@ bool Minespot (int row, int col, char minesboard[][16])					//function that chec
 		return false;
 }
 
-char nearbymines_num(int row, int col, int mines[][2], char minesBoard[][16]){		//function that count the number of nearby munes of the selected position
+//A function that count the number of nearby munes of the selected position
+char nearbymines_num(int row, int col, int mines[][2], char minesBoard[][16]){		
 	int num=0;
 	if (Valid_input(row+1,col)==true && Minespot(row+1, col, minesBoard)==true){	//check the south	
 		num++;
@@ -72,7 +76,7 @@ char nearbymines_num(int row, int col, int mines[][2], char minesBoard[][16]){		
 	return num;
 }
 
-//Function that decide the difficulty level of the game(board size, mines amount)
+//A function that decide the difficulty level of the game(board size, mines amount)
 void Level(string level)
 {
     if (level == "Master"){//Hardest level with 16*16 board and 45 mines in total
@@ -93,7 +97,7 @@ void Level(string level)
     return;
 }
 
-//Function that determine when the game end
+//A function that determine when the game end
 bool playloop(char playerBoard[][16], char minesBoard[][16], int mines[][2], int row, int col, int *movesremains)
 {
 
