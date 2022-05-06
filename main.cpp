@@ -101,32 +101,30 @@ void Level(string level)
 bool playloop(char playerBoard[][16], char minesBoard[][16], int mines[][2], int row, int col, int *movesremains)
 {
 
-	if (playerBoard[row][col] != '-')
+	if (playerBoard[row][col] != '-'){               //if the player input is already entered before the playloop will break
 		return (false);
-
-	// You opened a mine
-	// You are going to lose
-	if (minesBoard[row][col] == '*')
+	}
+	if (minesBoard[row][col] == '*')                 //if player hit the mines
 	{
 		playerBoard[row][col]='*';
 
-		for (int i=0; i<num_mines; i++)
+		for (int i=0; i<num_mines; i++){         // all the mines location will be shown on the board in terminal
 			playerBoard[mines[i][0]][mines[i][1]]='*';
-
-		printboard (playerBoard);
-		ifstream fin1;
-    		fin1.open("lose.txt");
+		}
+		printboard (playerBoard);                //the final player board with mines will be printed
+		ifstream fin1;                           //**File input** a "Boom" graphic and print on terminal
+    		fin1.open("lose.txt"); 
     		string line1;
     			while (getline(fin1, line1)) {
 				cout << line1 << endl;
- 			}
-		remove("answer.txt");
-		return true ;
+ 			} 
+		remove("answer.txt");                    //Deleted the **File output** answer txt file
+		return true ;                            //break playloop which endgame become true
 	}
-	else{
-		(*movesremains)--;
-		playerBoard[row][col] = nearbymines_num(row, col, mines, minesBoard) + '0';
-		return false;
+	else{                                            //if player did not hit the mines
+		(*movesremains)--;                       //total moves remains will be decreased
+		playerBoard[row][col] = nearbymines_num(row, col, mines, minesBoard) + '0';  //give out the hints to player
+		return false;                            //the playloop will break but not yet endgame
 	}
 }			
 
