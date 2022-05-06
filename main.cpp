@@ -132,7 +132,7 @@ bool playloop(char playerBoard[][16], char minesBoard[][16], int mines[][2], int
 
 
 int main(){
-    ifstream fin;
+    ifstream fin;                                  //*File input* that inculde a graphic and print in the terminal
     fin.open("Minesweeper.txt");
     string line;
     while ( getline(fin, line) ) {
@@ -140,23 +140,21 @@ int main(){
  	}
     string level;
     cout << "Please input the level of difficulty of your game: (Rookie/Challenger/Master)" << endl;
-    cin >> level;
+    cin >> level;                                 //step1: player input the difficulty of the game which determine the size of board and number of mines
     Level (level);
-    //cout << side<< '' << num_mines;
+    
 
-    char minesBoard[16][16], playerBoard[16][16]; //step1 : define 2 array (1 for player, 1 for the mines)
+    char minesBoard[16][16], playerBoard[16][16]; //step2 : define 2 array (1 for player, 1 for the mines)
 
     int movesremains = side * side - num_mines;
-    int mines[num_mines][2]; // step2 : define an array for mines
+    int mines[num_mines][2];                      // step3 : define an array for mines
 
-    startgame (minesBoard, playerBoard);// step3 : create two game board
+    startgame (minesBoard, playerBoard);          // step4 : create two game board (one for terminal, one for mines)
 
-    //printboard(minesBoard);
-    //printboard(playerBoard);
-    Mines_implementation(mines, minesBoard, side, num_mines); // step4 : randomly placing mines in mines board
-    //printboard(minesBoard);
-    //printboard(playerBoard);
-	ofstream fout;
+   
+    Mines_implementation(mines, minesBoard, side, num_mines); // step5 : randomly placing mines in mines board
+    
+	ofstream fout;                            //**File output** of the location of mines which can be used for cheating if needed  
 	fout.open("answer.txt", ios::app);
 	fout << "  ";
 	for (int i=0; i<side; i++){
@@ -170,31 +168,24 @@ int main(){
 		}
 		fout << endl;
 	}
-	
 	fout.close();
-
-
-    bool endgame = false; 
-    if (movesremains==(side * side - num_mines)){
-        
-    }
-    while (endgame == false){
+    bool endgame = false;                 
+    while (endgame == false){                                      //if endgame is false the game will continue
 	    cout<< "Board:"<<endl;
-	    printboard(playerBoard);
-	    //printboard(minesBoard);
+	    printboard(playerBoard);                               //print out the board for player in every turn
 	    int col, row;
-	    cout<< "Please enter your move: (row first then col)";
+	    cout<< "Please enter your move: (row first then col)"; //player input their moves
 	    cin>>row>>col;
-	    endgame = playloop (playerBoard, minesBoard, mines, row, col, &movesremains);
-	    if ((endgame == false) && (movesremains == 0)){
-	    		ifstream fin2;
+	    endgame = playloop (playerBoard, minesBoard, mines, row, col, &movesremains); //endgame will be true if the player hits the mines
+	    if ((endgame == false) && (movesremains == 0)){        //if players win the game
+	    		ifstream fin2;                             //**File input** a "win" graphic and print on terminal
     			fin2.open("win.txt");
     			string line2;
     				while (getline(fin2, line2)) {
 					cout << line2 << endl;
  				}
-	    		endgame = true;
-				remove("answer.txt");
+	    		endgame = true;                            //break the loop
+			remove("answer.txt");                      //Deleted the **File output** answer txt file
 	    	}
     	}   
         return 0;
