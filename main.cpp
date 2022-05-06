@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <cstring>
 #include <fstream>
 #include "board.h"
 
@@ -142,7 +141,7 @@ bool playloop(char playerBoard[][16], char minesBoard[][16], int mines[][2], int
 		ifstream fin1;
     		fin1.open("lose.txt");
     		string line1;
-    			while (getline(fin1, line)) {
+    			while (getline(fin1, line1)) {
 				cout << line1 << endl;
  			}
 		return true ;
@@ -196,7 +195,12 @@ int main(){
 	    endgame = playloop (playerBoard, minesBoard, mines, row, col, &movesremains);
 
 	    if ((endgame == false) && (movesremains == 0)){
-	    		cout<<"Winner Winner, Chicken Dinner!";
+	    		ifstream fin2;
+    			fin2.open("win.txt");
+    			string line2;
+    				while (getline(fin2, line2)) {
+					cout << line2 << endl;
+ 				}
 	    		endgame = true;
 	    	}
     	}
