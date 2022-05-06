@@ -139,7 +139,12 @@ bool playloop(char playerBoard[][16], char minesBoard[][16], int mines[][2], int
 			playerBoard[mines[i][0]][mines[i][1]]='*';
 
 		printboard (playerBoard);
-		cout<< "Boom! Game Over!";
+		ifstream fin1;
+    		fin1.open("lose.txt");
+    		string line1;
+    			while (getline(fin1, line)) {
+				cout << line1 << endl;
+ 			}
 		return true ;
 	}
 	else{
