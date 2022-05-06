@@ -1,4 +1,5 @@
 #include <iostream>
+#include "board.h"
 using namespace std;
 
 void startgame(char realboard[][16], char board[][16]){
