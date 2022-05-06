@@ -6,7 +6,8 @@
 using namespace std;
 int side, num_mines; //global variable of side and number of mines
 
-void startgame(char realboard[][16], char board[][16]){					//function that initialise two boards, one is for storing the mine position, another one is for player
+//A function that initialise two boards, one is for storing the mine position, another one is for player
+void startgame(char realboard[][16], char board[][16]){					
     srand(time (NULL));									//generate a random number to make sure that the game will not be same everytime
 	for (int i=0; i<side; i++){							//ensure that two boards have no mines
 		for (int j=0; j<side; j++){
@@ -191,8 +192,6 @@ int main(){
 	    		endgame = true;
 				remove("answer.txt");
 	    	}
-    	}
-
-    
+    	}   
         return 0;
 }
