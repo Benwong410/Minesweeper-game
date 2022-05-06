@@ -1,7 +1,8 @@
 #include "mines.h"
 #include <stdlib.h> 
 
-//The 
+//The function is used to randomly generate the spot of mines
+//It will return a minesboard with mines implemented 
 void Mines_implementation(int mines[][2], char minesBoard[][16], int side, int num_mines)
 {	
 	bool check[side*side];
