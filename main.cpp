@@ -71,7 +71,7 @@ char nearbymines_num(int row, int col, int mines[][2], char minesBoard[][16]){		
 	return num;
 }
 
-//Function that decide the level of the game(board size, mines amount)
+//Function that decide the difficulty level of the game(board size, mines amount)
 void Level(string level)
 {
     if (level == "Master"){//Hardest level with 16*16 board and 45 mines in total
@@ -92,6 +92,7 @@ void Level(string level)
     return;
 }
 
+//Function that determine when the game end
 bool playloop(char playerBoard[][16], char minesBoard[][16], int mines[][2], int row, int col, int *movesremains)
 {
 
