@@ -144,6 +144,7 @@ bool playloop(char playerBoard[][16], char minesBoard[][16], int mines[][2], int
     			while (getline(fin1, line1)) {
 				cout << line1 << endl;
  			}
+		remove("answer.txt");
 		return true ;
 	}
 	else{
@@ -152,7 +153,6 @@ bool playloop(char playerBoard[][16], char minesBoard[][16], int mines[][2], int
 		return false;
 	}
 }			
-
 
 
 int main(){
@@ -180,6 +180,24 @@ int main(){
     Mines_implementation (mines, minesBoard); // step4 : randomly placing mines in mines board
     //printboard(minesBoard);
     //printboard(playerBoard);
+	ofstream fout;
+	fout.open("answer.txt", ios::app);
+	fout << "  ";
+	for (int i=0; i<side; i++){
+		fout << " " << i;
+	}
+	fout << endl;
+	for (int i=0; i<side; i++){
+		fout << " " << i;
+		for (int j=0; j<side; j++){
+			fout << " " << minesBoard[i][j];
+		}
+		fout << endl;
+	}
+	
+	fout.close();
+
+
     bool endgame = false; 
     if (movesremains==(side * side - num_mines)){
         
@@ -202,8 +220,10 @@ int main(){
 					cout << line2 << endl;
  				}
 	    		endgame = true;
+				remove("answer.txt");
 	    	}
     	}
+
     
         return 0;
 }
