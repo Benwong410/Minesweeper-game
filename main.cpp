@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "board.h"
+#include "mines.h"
 
 using namespace std;
 int side, num_mines; //global variable of side and number of mines
@@ -45,31 +45,6 @@ bool Minespot (int row, int col, char minesboard[][16])
 		return false;
 }
 
-void Mines_implementation(int mines[][2], char minesBoard[][16])
-{
-	bool check[side*side];
-
-	//memset (mark, false, sizeof (mark));
-
-	for (int i=0; i<num_mines; )
-	{
-		int random = rand() % (side*side);
-		int x = random / side;
-		int y = random % side;
-
-		if (check[random] == false)
-		{
-			mines[i][0]= x;
-			mines[i][1] = y;
-
-			minesBoard[mines[i][0]][mines[i][1]] = '*';
-			check[random] = true;
-			i++;
-		}
-	}
-
-	return;
-}
 
 //function that count the number of nearby munes of the selected position
 char nearbymines_num(int row, int col, int mines[][2], char minesBoard[][16]){
@@ -177,7 +152,7 @@ int main(){
 
     //printboard(minesBoard);
     //printboard(playerBoard);
-    Mines_implementation (mines, minesBoard); // step4 : randomly placing mines in mines board
+    Mines_implementation(mines, minesBoard, side, num_mines); // step4 : randomly placing mines in mines board
     //printboard(minesBoard);
     //printboard(playerBoard);
 	ofstream fout;
