@@ -34,13 +34,15 @@ Randomly generate a rectangular board with selected number of "mines" for each g
     * The generation of mines position involved rand() in <stdlib.h> library
 
 * 2: Data structures for storing game status
-    * The game will use 2D arrays for storing the game status, such as the board on screen and hiden game board
+    * The game will use 2D arrays for storing the game status, such as the board on screen, minesboard and mines position
+    * The array will be changed 
 
 * 3: Dynamic memory management
     * There will be update of arrays after player input and provide hints
     
 * 4: File input/output (e.g., for loading/saving game status)
-    * The game can be pause and resume if the players quit 
+    * There are graphic input to the terminal in the beginning and ending of game
+    * The answer of the minesweeper will be output as answer.txt for player to cheat if needed
     
 * 5: Program codes in multiple files
-    * use makefile to store function in mutiple files
+    * use makefile to store function in mutiple files (e.g. mines.cpp file)
