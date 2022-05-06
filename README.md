@@ -30,7 +30,8 @@ Randomly generate a rectangular board with selected number of "mines" for each g
 
 ## Features and Coding Requirements
 * 1: Generation of random game sets or events
-    * The position of the "mines" will be randomly generated
+    * The position of the "mines" is randomly generated in Mines_implementation function in mines.cpp file
+    * The generation of mines position involved rand() in <stdlib.h> library
 
 * 2: Data structures for storing game status
     * The game will use 2D arrays for storing the game status, such as the board on screen and hiden game board
