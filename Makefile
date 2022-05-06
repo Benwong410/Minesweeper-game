@@ -1,13 +1,13 @@
 .PHONY: clean
 
-main: board.o main.o
-	g++ -c main.cpp -o main
-
-board.o: board.cpp board.h
-	g++ -c board.cpp
+main: main.o mines.o
+	g++ main.o mines.o -o main
 
 main.o: main.cpp
 	g++ -c main.cpp
-	
+
+mines.o: mines.cpp mines.h
+	g++ -c mines.cpp
+
 clean:
 	rm *.o main
