@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cstring>
+#include "board.h"
 
 using namespace std;
 int side, num_mines; //global variable of side and number of mines
