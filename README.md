@@ -46,4 +46,11 @@ Generate a (5x5 / 9x9 / 16x16) board with selected number of "mines" for each ga
     
 * 5: Program codes in multiple files
     * The mines.cpp contains the function to implement "mines", the main.cpp contains all the left functions of the game.
-    * Use makefile to compile the program from the source codes (main.cpp and mines.cpp).
+    * Use makefile to compile the program from the source codes (main.cpp and mines.cpp).\
+    
+## User Command
+1. Download the whole folder
+2. Open terminal in the file
+3. Type "make" enter
+4. Type "./main' enter
+5. Play the game
