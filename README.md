@@ -56,4 +56,5 @@ Generate a (5x5 / 9x9 / 16x16) board with selected number of "mines" for each ga
 5. Play the game
 
 *Testing Server: Academy 11 Server
+
 *p.s. The sample input/output files are used for reference only, as the game involved random generation of mines location, output may not be the same.
