@@ -1,4 +1,4 @@
-# Group-35 (Project Proposal)
+# Group-35 (Project)
 
 ## Identification of The Team Members
 ```
@@ -38,7 +38,7 @@ Generate a (5x5 / 9x9 / 16x16) board with selected number of "mines" for each ga
     * The array will be changed and update after the player input their row and colum
 
 * 3: Dynamic memory management
-    * 
+    * Dynamic array is used to facilitate the file output
     
 * 4: File input/output (e.g., for loading/saving game status)
     * There are graphic input to the terminal in the beginning and ending of game
