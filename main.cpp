@@ -152,21 +152,30 @@ int main(){
    
     Mines_implementation(mines, minesBoard, side, num_mines); // step5 : randomly placing mines in mines board
     
+
+	int n=side;
+	int * a = new int [n];                    //<---Use of dynamic array in file output
+	for (int i = 0; i < n; ++i){
+        	a[i] = i;
+	}
 	ofstream fout;                            //**File output** of the location of mines which can be used for cheating if needed  
 	fout.open("answer.txt", ios::app);
 	fout << "  ";
 	for (int i=0; i<side; i++){
-		fout << " " << i;
+		fout << " " << a[i];
 	}
 	fout << endl;
+	
 	for (int i=0; i<side; i++){
-		fout << " " << i;
+		fout << " " << a[i];
 		for (int j=0; j<side; j++){
 			fout << " " << minesBoard[i][j];
 		}
 		fout << endl;
 	}
 	fout.close();
+	delete [] a;
+	
     bool endgame = false;                 
     while (endgame == false){                                      //if endgame is false the game will continue
 	    cout<< "Board:"<<endl;
