@@ -54,4 +54,5 @@ Generate a (5x5 / 9x9 / 16x16) board with selected number of "mines" for each ga
 3. Type "make" enter
 4. Type "./main" enter
 5. Play the game
+
 *Testing Server: Academy 11 Server
